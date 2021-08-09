@@ -1,0 +1,114 @@
+/*
+File: styles.css
+GUI Assignment 3: Creating an Interactive Dynamic Table
+
+Aurimas Alkevicius, UMass Lowell Computer Science, aurimas_alkevicius@cs.uml.edu
+Copyright (c) 2021 by Alkevicius. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+updated by AA on August 9, 2021 
+*/
+
+body {
+    background-color: lightyellow;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+/* Input form */
+
+#main {
+    background-color: lightgreen;
+    margin-top: 10px;
+    padding: 20px;
+    height: 392px;
+    border: 2px solid blue;
+    overflow: scroll;
+}
+
+.generated-table-style {
+    margin-top: 10px;
+    width: 750px;
+    height: 392px;
+    padding: 20px;
+    border: 2px solid blue;
+    background-color: lightgreen;
+    float: left;
+    overflow: scroll;
+}
+
+
+/* Submit button */
+
+.btn {
+    border: 1px solid blue;
+    background-color: magenta;
+}
+
+
+/* Input fields */
+
+.form-control {
+    border: 1px solid blue;
+}
+
+
+/* Used to achieve checkered style */
+
+.odd-cell {
+    text-align: center;
+    border: 3px solid lightgreen;
+    background-color: yellow;
+    padding: 10px;
+    width: 12px;
+    height: 12px;
+    font-size: 12pt;
+}
+
+
+/* Used to achieve checkered style */
+
+.even-cell {
+    text-align: center;
+    border: 3px solid lightgreen;
+    background-color: #FC886F;
+    padding: 10px;
+    width: 12px;
+    height: 12px;
+    font-size: 12pt;
+}
+
+
+/* table headers */
+
+.table-header {
+    text-align: center;
+    border: 3px solid lightgreen;
+    background-color: magenta;
+    padding: 10px;
+    width: 12px;
+    height: 12px;
+    font-weight: bold;
+    font-size: 15pt;
+}
+
+.bold {
+    font-weight: bold;
+    font-size: 15pt;
+}
+
+h3 {
+    margin-bottom: 30px;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
+#footer {
+    padding-top: 40px;
+}
+
+.block-style {
+    display: block;
+}

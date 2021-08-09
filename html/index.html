@@ -1,0 +1,98 @@
+<!--
+File: index.html
+GUI Assignment 3: Creating an Interactive Dynamic Table
+
+Aurimas Alkevicius, UMass Lowell Computer Science, aurimas_alkevicius@cs.uml.edu
+Copyright (c) 2021 by Alkevicius. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+updated by AA on August 9, 2021 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="../css/styles.css" rel="stylesheet">
+
+    <title>Multiplication Table</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Header -->
+        <div class="row">
+            <h1 class="col">Dynamic Multiplication Table</h1>
+        </div>
+
+        <!-- Input Form and Multiplication Table -->
+        <div class="row">
+
+            <!-- Input Form -->
+            <div class="col-md-4">
+                <div id="main">
+                    <h3><strong>Enter the range:</strong> </h3>
+                    <form id="form">
+                        <div class="form-group row">
+                            <label class="col-md-8  ">Multiplier starting range: </label>
+                            <div class="col-md-4 ">
+                                <input type="number" class="form-control bold">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-8 ">Multiplier ending range: </label>
+                            <div class="col-md-4 ">
+                                <input type="number" class="form-control bold">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-8  ">Multiplicand starting range: </label>
+                            <div class="col-md-4 ">
+                                <input type="number" class="form-control bold">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-8  ">Multiplicand ending range: </label>
+                            <div class="col-md-4 ">
+                                <input type="number" class="form-control bold">
+                            </div>
+                        </div>
+                        <div class="col-md-auto">
+                            <input type="button" onclick="validateInput()" class="btn bold" value="Submit">
+                        </div>
+                    </form>
+                    <div id='errorMessage'></div>
+                </div>
+            </div>
+
+            <!-- Multiplication Table -->
+            <div class="container">
+                <div class="table" id="dynamicTable"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="row" id="footer">
+            <div class="col">
+                <p style="text-align: center">GUI I 2021 <br> Aurimas Alkevicius<br> </p>
+                <p style="text-align: center">
+                    <p>
+                        <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                            <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" />
+                        </a>
+                        <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Faurimasalkevicius.github.io%2Fhw3%2Fhtml%2Findex.html"><img style="border:0;width:88px;height:31px" src="../img/valid-html.png" alt="Valid HTML5"></a>
+
+                    </p>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
