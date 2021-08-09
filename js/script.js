@@ -6,6 +6,9 @@ Aurimas Alkevicius, UMass Lowell Computer Science, aurimas_alkevicius@cs.uml.edu
 Copyright (c) 2021 by Alkevicius. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
 updated by AA on August 9, 2021 
+
+Credit to:  Code Cast https://www.youtube.com/watch?v=zQUbb2ZtdIc
+
 */
 
 $(function() {
@@ -84,7 +87,6 @@ $(function() {
             return false;
         }
     })
-
 });
 
 // generate table - from homework 3
