@@ -1,6 +1,6 @@
 /*
 File: scripts.js
-GUI Assignment 3: Creating an Interactive Dynamic Table
+GUI Assignment 4: PART 1: Validation Plugin 
 
 Aurimas Alkevicius, UMass Lowell Computer Science, aurimas_alkevicius@cs.uml.edu
 Copyright (c) 2021 by Alkevicius. All rights reserved. May be freely copied or
@@ -8,39 +8,99 @@ excerpted for educational purposes with credit to the author.
 updated by AA on August 9, 2021 
 */
 
-const minOfRange = -50,
-    maxOfRange = 50;
+$(function() {
 
-function validateInput() {
+    // style input fields and error messages if any
+    $.validator.setDefaults({
+        errorClass: 'help-block',
+        highlight: function(element) {
+            $(element)
+                .closest('.form-group')
+                .addClass('has-error');
+        },
+        unhighlight: function(element) {
+            $(element)
+                .closest('.form-group')
+                .removeClass('has-error');
+        },
 
-    // this will hold error message
-    var errorMessage = '';
+    });
 
-    //clear html elements
-    document.getElementById('errorMessage').innerHTML = '';
-    document.getElementById('dynamicTable').innerHTML = '';
+    // check if input range is valid
+    $.validator.addMethod('isInRange', function(value, element) {
+        return this.optional(element) ||
+            value >= -50 &&
+            value <= 50;
+    }, 'An integer in <em>Multiplier start</em> field must be within -50 and 50.')
+
+    // check if input is a fraction 
+    $.validator.addMethod('isFraction', function(value, element) {
+        return this.optional(element) ||
+            value % 1 == 0;
+    }, 'A value in <em>Multiplier start</em> field must an integer.')
+
+    // validate input form
+    $("#inputForm").validate({
+        rules: {
+            multiplierStart: {
+                required: true,
+                isInRange: true,
+                isFraction: true
+            },
+            multiplierEnd: {
+                required: true,
+                isInRange: true,
+                isFraction: true
+            },
+            multiplicandStart: {
+                required: true,
+                isInRange: true,
+                isFraction: true
+            },
+            multiplicandEnd: {
+                required: true,
+                isInRange: true,
+                isFraction: true
+            },
+        },
+        // display custom error messages
+        messages: {
+            multiplierStart: {
+                required: 'Please enter <em>Multiplier starting range</em>.'
+            },
+            multiplierEnd: {
+                required: 'Please enter <em>Multiplier ending range</em>.'
+            },
+            multiplicandStart: {
+                required: 'Please enter <em>Multiplicand starting range</em>.'
+            },
+            multiplicandEnd: {
+                required: 'Please enter <em>Mltiplicand ending range</em>.'
+            }
+        },
+        // generate the table if no errors
+        submitHandler: function() {
+            generateTable();
+            return false;
+        }
+    })
+
+});
+
+// generate table - from homework 3
+
+function generateTable() {
+    var dynamicTable = '',
+        multiplier, multiplicand, alternatingColumn,
+        alternatingRow = 1; //alternatingColumn and alternatingRow are used to alternate table cell style 
+    var userInput = document.getElementsByClassName("form-control");
 
     // get user input values and parse them to integers
-    var multiplierStart = Number(document.getElementById("form").elements[0].value);
-    var multiplierEnd = Number(document.getElementById("form").elements[1].value);
-    var multiplicandStart = Number(document.getElementById("form").elements[2].value);
-    var multiplicandEnd = Number(document.getElementById("form").elements[3].value);
+    var multiplierStart = parseInt(document.getElementsByClassName("form-control")[0].value);
+    var multiplierEnd = parseInt(userInput[1].value);
+    var multiplicandStart = parseInt(userInput[2].value);
+    var multiplicandEnd = parseInt(userInput[3].value);
 
-    // user inpuut validation block
-    if (isEmptyField(multiplierStart)) errorMessage += "Please enter an integer in <em>Multiplier start</em> field.<br>";
-    if (isEmptyField(multiplierEnd)) errorMessage += "Please enter an integer in <em>Multiplier end</em> field.<br>";
-    if (isEmptyField(multiplicandStart)) errorMessage += "Please enter an integer in <em>Multiplicand start</em> field.<br>";
-    if (isEmptyField(multiplicandEnd)) errorMessage += "Please enter an integer in <em>Multiplicand end</em> field.<br>";
-
-    if (isOutOfRange(multiplierStart)) errorMessage += "An integer in <em>Multiplier start</em> field must be within -50 and 50.<br>";
-    if (isOutOfRange(multiplierEnd)) errorMessage += "An integer in <em>Multiplier end</em> field must be within -50 and 50.<br>";
-    if (isOutOfRange(multiplicandStart)) errorMessage += "An integer in <em>Multiplicand start</em> field must be within -50 and 50.<br>";
-    if (isOutOfRange(multiplicandEnd)) errorMessage += "An integer in <em>Multiplicand end</em> field must be within -50 and 50.<br>";
-
-    if (isFraction(multiplierStart)) errorMessage += "The input in <em>Multiplier start</em> field should be an integer.<br>";
-    if (isFraction(multiplierEnd)) errorMessage += "The input in <em>Multiplier end</em> field should be an integer.<br>";
-    if (isFraction(multiplicandStart)) errorMessage += "The input in <em>Multiplicand start</em> field should be an integer.<br>";
-    if (isFraction(multiplicandEnd)) errorMessage += "The input in <em>Multiplicand end</em> field should be an integer.<br>";
 
     // swap values if user input is not in acending order
     if (isInDecendingOrder(multiplierStart, multiplierEnd)) {
@@ -50,39 +110,6 @@ function validateInput() {
     if (isInDecendingOrder(multiplicandStart, multiplicandEnd)) {
         [multiplicandStart, multiplicandEnd] = [multiplicandEnd, multiplicandStart];
     }
-
-    // display error message if any
-    document.getElementById('errorMessage').innerHTML = errorMessage;
-
-    // generate table if no errors
-    if (errorMessage == '') generateTable(multiplierStart, multiplierEnd, multiplicandStart, multiplicandEnd);
-
-}
-
-// helper functions
-
-function isEmptyField(inputField) {
-    return inputField === '';
-}
-
-function isOutOfRange(inputField) {
-    return (inputField < minOfRange || inputField > maxOfRange);
-}
-
-function isFraction(inputField) {
-    return inputField % 1 !== 0;
-}
-
-function isInDecendingOrder(inputField1, inputField2) {
-    return inputField1 > inputField2;
-}
-
-// generate table
-
-function generateTable(multiplierStart, multiplierEnd, multiplicandStart, multiplicandEnd) {
-    var dynamicTable = '',
-        multiplier, multiplicand, alternatingColumn,
-        alternatingRow = 1; //alternatingColumn and alternatingRow are used to alternate table cell style 
 
     // adding dynamic table styling
     document.getElementById("dynamicTable").classList.add("generated-table-style");
@@ -126,4 +153,9 @@ function generateTable(multiplierStart, multiplierEnd, multiplicandStart, multip
 
     // finish building the table and display it
     document.getElementById('dynamicTable').innerHTML = (dynamicTable += '</table>');
+}
+
+// helper function
+function isInDecendingOrder(inputField1, inputField2) {
+    return inputField1 > inputField2;
 }

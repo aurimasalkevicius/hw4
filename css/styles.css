@@ -1,6 +1,6 @@
 /*
 File: styles.css
-GUI Assignment 3: Creating an Interactive Dynamic Table
+GUI Assignment 4: PART 1: Validation Plugin 
 
 Aurimas Alkevicius, UMass Lowell Computer Science, aurimas_alkevicius@cs.uml.edu
 Copyright (c) 2021 by Alkevicius. All rights reserved. May be freely copied or
@@ -107,8 +107,4 @@ h1 {
 
 #footer {
     padding-top: 40px;
-}
-
-.block-style {
-    display: block;
 }

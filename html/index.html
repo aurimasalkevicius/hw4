@@ -1,6 +1,6 @@
 <!--
 File: index.html
-GUI Assignment 3: Creating an Interactive Dynamic Table
+GUI Assignment 4: PART 1: Validation Plugin 
 
 Aurimas Alkevicius, UMass Lowell Computer Science, aurimas_alkevicius@cs.uml.edu
 Copyright (c) 2021 by Alkevicius. All rights reserved. May be freely copied or
@@ -37,33 +37,33 @@ updated by AA on August 9, 2021
             <div class="col-md-4">
                 <div id="main">
                     <h3><strong>Enter the range:</strong> </h3>
-                    <form id="form">
+                    <form id="inputForm">
                         <div class="form-group row">
                             <label class="col-md-8  ">Multiplier starting range: </label>
                             <div class="col-md-4 ">
-                                <input type="number" class="form-control bold">
+                                <input type="number" class="form-control " name="multiplierStart">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-8 ">Multiplier ending range: </label>
                             <div class="col-md-4 ">
-                                <input type="number" class="form-control bold">
+                                <input type="number" class="form-control " name="multiplierEnd">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-8  ">Multiplicand starting range: </label>
                             <div class="col-md-4 ">
-                                <input type="number" class="form-control bold">
+                                <input type="number" class="form-control " name="multiplicandStart">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-8  ">Multiplicand ending range: </label>
                             <div class="col-md-4 ">
-                                <input type="number" class="form-control bold">
+                                <input type="number" class="form-control " name="multiplicandEnd">
                             </div>
                         </div>
                         <div class="col-md-auto">
-                            <input type="button" onclick="validateInput()" class="btn bold" value="Submit">
+                            <input type="submit" id="submit-button" class="btn bold" value="Submit">
                         </div>
                     </form>
                     <div id='errorMessage'></div>
@@ -81,18 +81,25 @@ updated by AA on August 9, 2021
             <div class="col">
                 <p style="text-align: center">GUI I 2021 <br> Aurimas Alkevicius<br> </p>
                 <p style="text-align: center">
-                    <p>
-                        <a href="http://jigsaw.w3.org/css-validator/check/referer">
-                            <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" />
-                        </a>
-                        <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Faurimasalkevicius.github.io%2Fhw3%2Fhtml%2Findex.html"><img style="border:0;width:88px;height:31px" src="../img/valid-html.png" alt="Valid HTML5"></a>
-
-                    </p>
+                    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                        <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" />
+                    </a>
+                    <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Faurimasalkevicius.github.io%2Fhw3%2Fhtml%2Findex.html"><img style="border:0;width:88px;height:31px" src="../img/valid-html.png" alt="Valid HTML5"></a>
                 </p>
             </div>
         </div>
     </div>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- jquery validator plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <!-- jQuery UI plugin -->
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- js script -->
     <script src="../js/script.js"></script>
+
 </body>
 
 </html>
